@@ -1,0 +1,10 @@
+<div>
+  <h2 class="h1">{{c.data.artist.name}}</h2>
+  <div ng-repeat="track in c.data.topTracks track by $index">
+    <h3>{{track.name}}</h3>
+    <button class="btn btn-link" ng-click="c.openTrackPlayer($index)">Play</button>
+    <div ng-if="track.selected">
+      Playing songs is not yet supported :(
+    </div>
+  </div>
+</div>

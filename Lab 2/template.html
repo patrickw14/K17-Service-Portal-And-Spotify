@@ -1,0 +1,6 @@
+<div>
+  <img ng-src="{{item.images[0].url}}" style="height: 80px;" />
+  <h2><a ng-href="{{item.url}}">{{item.name}}</a></h2>
+  <span ng-repeat="genre in item.genres | limitTo:3">{{genre}}</span>
+  <a ng-href="{{item.external_urls.spotify}}" target="_blank">Open artist in Spotify</a>
+</div>
