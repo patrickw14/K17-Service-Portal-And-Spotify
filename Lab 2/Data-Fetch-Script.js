@@ -9,7 +9,7 @@
 		results = response.artists.items;
 		var score = 100;
 		results.forEach(function(result) {
-			result.url = "?id=spotify-artist&artist=" + result.id;
+			result.url = "?id=spotify_artist&artist=" + result.id;
 			result.primary = result.name;
 			result.score = score--;
 		});
