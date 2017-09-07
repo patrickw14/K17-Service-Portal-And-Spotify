@@ -8,9 +8,18 @@
 		return;
 	}
 	
+	var tokenRequest = new sn_ws.RESTMessageV2();
+	tokenRequest.setEndpoint('https://hello.service-now.com/api/snc/spotifytoken');
+	tokenRequest.setHttpMethod('GET');
+	tokenRequest.setRequestHeader("Accept","application/json");
+
+	var tokenResponse = tokenRequest.execute();
+	var tokenBody = new JSON().decode(tokenResponse.getBody());
+	var token = tokenBody.result;
+	
 	var artistURL = "https://api.spotify.com/v1/artists/" + artistID;
 	var artistURLRequest = new GlideHTTPRequest(artistURL);
-	artistURLRequest.addHeader("Authorization", "Bearer BQD0yyru2FwlBPtt3GmXjU9FB_XzWjKYxIrI1Fa_967nZVeVBFUnxvQCCq3Ps0EY2iQbKGDWPrsXwIaGAmTIvw");
+	artistURLRequest.addHeader("Authorization", "Bearer " + token);
 	var artistJSONResponse = artistURLRequest.get();
 	if (artistJSONResponse) {
 		data.artist = new JSON().decode(artistJSONResponse.getBody());
@@ -25,7 +34,7 @@
 	
 	var topTracksURL = "https://api.spotify.com/v1/artists/" + artistID + "/top-tracks?country=US";
 	var topTracksURLRequest = new GlideHTTPRequest(topTracksURL);
-	topTracksURLRequest.addHeader("Authorization", "Bearer BQD0yyru2FwlBPtt3GmXjU9FB_XzWjKYxIrI1Fa_967nZVeVBFUnxvQCCq3Ps0EY2iQbKGDWPrsXwIaGAmTIvw");
+	topTracksURLRequest.addHeader("Authorization", "Bearer " + token);
 	var topTracksJSONResponse = topTracksURLRequest.get();
 	if (topTracksJSONResponse) {
 		data.topTracks = new JSON().decode(topTracksJSONResponse.getBody());
