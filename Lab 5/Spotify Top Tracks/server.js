@@ -10,6 +10,7 @@
 	
 	var artistURL = "https://api.spotify.com/v1/artists/" + artistID;
 	var artistURLRequest = new GlideHTTPRequest(artistURL);
+	artistURLRequest.addHeader("Authorization", "Bearer BQD0yyru2FwlBPtt3GmXjU9FB_XzWjKYxIrI1Fa_967nZVeVBFUnxvQCCq3Ps0EY2iQbKGDWPrsXwIaGAmTIvw");
 	var artistJSONResponse = artistURLRequest.get();
 	if (artistJSONResponse) {
 		data.artist = new JSON().decode(artistJSONResponse.getBody());
