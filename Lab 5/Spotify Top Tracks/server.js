@@ -25,6 +25,7 @@
 	
 	var topTracksURL = "https://api.spotify.com/v1/artists/" + artistID + "/top-tracks?country=US";
 	var topTracksURLRequest = new GlideHTTPRequest(topTracksURL);
+	topTracksURLRequest.addHeader("Authorization", "Bearer BQD0yyru2FwlBPtt3GmXjU9FB_XzWjKYxIrI1Fa_967nZVeVBFUnxvQCCq3Ps0EY2iQbKGDWPrsXwIaGAmTIvw");
 	var topTracksJSONResponse = topTracksURLRequest.get();
 	if (topTracksJSONResponse) {
 		data.topTracks = new JSON().decode(topTracksJSONResponse.getBody());
