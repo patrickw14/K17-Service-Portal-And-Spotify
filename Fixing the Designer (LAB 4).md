@@ -9,15 +9,3 @@ We will be talking about the full fix on stage. However, by simply...
 3. <strong>Adding</strong> the Provider back to the widget
 
 ... you will be good to go! :)
-
-try {
-	angular.module('ng_spd').config(function(lazyLoaderProvider, $provide, $compileProvider, $controllerProvider){
-		lazyLoaderProvider.set({
-			register: $controllerProvider.register,
-			directive: $compileProvider.directive,
-			factory: $provide.factory,
-			value: $provide.value,
-			service: $provide.service
-		});
-	});
-}catch(e){}
